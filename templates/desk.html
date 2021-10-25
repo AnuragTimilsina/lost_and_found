@@ -41,8 +41,8 @@
       {% for row in items|batch(3) %}
       <div class="row mt-3">
         {% for item in row%}
-        <div class="col-3 ml-3" style="color: #212121;">
-            <div class="card">
+        <div class="col ml-3" style="color: #212121;">
+            <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">{{ item.id }}. {{ item.name }}</h5>
