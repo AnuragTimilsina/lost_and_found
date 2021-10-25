@@ -17,5 +17,10 @@ def desk():
         {'id': 1, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
         {'id': 2, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
         {'id': 3, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
+        {'id': 4, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
+        {'id': 5, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
+        {'id': 3, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
+        {'id': 4, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
+        {'id': 5, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
     ]
     return render_template('desk.html', items=items)

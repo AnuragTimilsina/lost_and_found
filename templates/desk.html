@@ -37,23 +37,29 @@
       </nav>
     <h1>Front Desk:</h1>
 
-    <div class="grid-container">
-        {% for item in items %}
-        <div class="card grid-child" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{ item.id }}. {{ item.name }}</h5>
-              <p class="card-text">{{ item.description }}</p>
+    <div class="container center">
+      {% for row in items|batch(3) %}
+      <div class="row mt-3">
+        {% for item in row%}
+        <div class="col-3 ml-3" style="color: #212121;">
+            <div class="card">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ item.id }}. {{ item.name }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Found by: {{ item.found_by }}</li>
+                <li class="list-group-item">Founder Contact: {{ item.founder_contact }}</li>
+              </ul>
+              <div class="card-body">
+                <button class="btn btn-outline btn-info"><a href="#" style="color: #212121;">See More</a></button>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Found by: {{ item.found_by }}</li>
-              <li class="list-group-item">Founder Contact: {{ item.founder_contact }}</li>
-            </ul>
-            <div class="card-body">
-              <button class="btn btn-outline btn-info"><a href="#" style="color: #212121;">See More</a></button>
-            </div>
-          </div>
+        </div>
         {% endfor %}
+      </div>
+      {% endfor %}
     </div>
 
     <!-- Optional JavaScript -->
@@ -63,21 +69,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
   <style>
-
       body{
           background-color: #212121;
           color: white;
       }
-
-      .grid-container{
-          display: grid;
-          grid-gap: 50px 100px;
-          color: black;
-      }
-
-      .grid-child{
-          float: left;
-      }
-      
   </style>
 </html>
