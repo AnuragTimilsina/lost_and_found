@@ -1,8 +1,24 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///desk.db'
+db = SQLAlchemy(app)
+
+class Item(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=40), nullable=False, unique=True)
+    description = db.Column(db.String(length=1000), nullable=False, unique=True)
+    #image=
+    found_by = db.Column(db.String(length=35), nullable=False)
+    founder_contact = db.Column(db.String(length=150), nullable=False)
+
+    def __repr__(self):
+        return f"Item name: {self.name}"
 
 @app.route("/")
-def app_check():
+@app.route("/home")
+def home_page():
     return render_template('home.html')
 
 
@@ -13,14 +29,5 @@ def about_page(username):
 
 @app.route('/desk')
 def desk():
-    items = [
-        {'id': 1, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 2, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 3, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 4, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 5, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 3, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 4, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-        {'id': 5, 'name':'IDcard', 'image':'idcard.jpg', 'description':'Found infront of KU library. The name says: John Doe', 'found_by': 'James Doe', 'founder_contact': 'Bla bla bla'},
-    ]
+    items = Item.query.all()
     return render_template('desk.html', items=items)
