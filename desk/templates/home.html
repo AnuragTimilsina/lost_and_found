@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block title%}
-  Home Page
+  Welcome to the virtual lost and found desk
 {% endblock %}
 
 {% block content %}
-  This is the content for the home page!
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color: white;">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h2>Virtual lost and found desk</h2>
+    <p class="lead font-weight-normal">Search your lost items here!</p>
+    <a href="{{ url_for('desk') }}" class="btn btn-primary">Find items!</a>
+  </div>
+</div>
 {% endblock %}
