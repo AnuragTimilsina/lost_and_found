@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Regrestration Page
+{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+        <div class="container">
+            
+            <div class="error-msg" style="color: white;">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <!-- <div class="alert alert-{{ category }}">
+                            <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div> -->
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <form method="POST" class="form-register" style="color:white">
+                {{ form.hidden_tag() }}
+                <h3>Create your account!</h1>
+                {{ form.username.label() }}
+                {{ form.username(class="form-control", placeholder="User Name") }}
+
+                {{ form.email_address.label() }}
+                {{ form.email_address(class="form-control", placeholder="Email Address") }}
+
+                {{ form.password1.label() }}
+                {{ form.password1(class="form-control", placeholder="Password") }}
+
+                {{ form.password2.label()}}
+                {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+                    
+                <br>
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+            </form>
+        </div>
+    </body>
+{% endblock %}
